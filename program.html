@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <style>
+.element {
+  animation: pulse 5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #001F3F;
+  }
+  100% {
+    background-color: #FF4136;
+  }
+}
+
+  
+body {
+   background: url("") no-repeat center;
+      background-size: cover;
+  background: #ffff
+ 
+  font-size: 12px;
+}
+
+body, button, input {
+  font-family: 'Righteous', cursive;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.background {
+  display: flex;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1 10 700px;
+  margin: auto;
+  padding: 10px;
+}
+
+.screen {
+  position: relative;
+  background: #345f3e;
+  border-radius: 15px;
+}
+
+.screen:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  bottom: 0;
+  border-radius: 15px;
+  box-shadow: 0 20px 40px rgba(1, 0, 0, .4);
+  z-index: -1;
+}
+
+.screen-body {
+  display: flex;
+}
+
+.screen-body-item {
+  flex: 1;
+  padding: 50px;
+}
+
+.screen-body-item.left{
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+display: flex;
+}
+
+.app-title {
+  display: flex;
+  /*flex-direction: column;*/
+  justify-content: center;
+  align-items: center;
+  /*33d9b2*/
+  color: #ffff;f;
+  font-size: 25px;
+  text-transform: uppercase;
+  /*218c74
+  border-left: 10px solid #780b65;*/
+  padding: 10px;
+}
+
+.app-form-group {
+  margin-bottom: 30px;
+}
+
+.ab {
+  margin-bottom: 0;
+  text-align: right;
+}
+
+.a {
+  width: 100%;
+  padding: 10px 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #666;
+  color: #fff;
+  font-size: 14px;
+  text-transform: uppercase;
+  outline: none;
+  transition: border-color .2s;
+}
+.a::placeholder {
+  color: #fee14f;
+}
+
+.a:focus {
+  border-bottom-color: #ddd;
+}
+
+.ab {
+  background: none;
+  border: none;
+  */33d9b2*/
+  color: #fee14f;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  text-transform: uppercase;
+}
+
+.ab:hover {
+  color: #218c74;
+}
+
+.showdata{
+  text-align: center;
+  color: black;
+  font-size: 1.2rem;
+  padding-top: -10px;
+  padding-bottom: 10px;
+}
+
+  </style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class ="background">
+<div class="container">
+    <div class="screen">
+      <div class="screen-body">
+        <div class="screen-body-item left">
+          <div class="app-title">
+            
+              4th Semester <br> Grade <br> Calculation
+            </div>
+          </div>
+        </div>
+        <div class="screen-body-item">
+          <div class="app-form">
+            <div class="app-form-group">
+              <input type="text" class="a" placeholder="DATA STRUCTURE" id="ds">
+            </div>
+            <div class="app-form-group">
+              <input  type="text"  class="a"   placeholder="DATABASE AND MANAGMENT SYSTEM" id="dbms">
+            </div>
+             <div class="app-form-group">
+              <input  type="text"  class="a"   placeholder="MODELING AND SIMULATION" id="mas">
+            </div>
+            <div class="app-form-group">
+              <input  type="text"  class="a"   placeholder="MICROPROCESSOR" id="mp" >
+            </div>
+            <div class="app-form-group">
+              <input  type="text"  class="a"   placeholder="FOURIER SERIES" id="fst">
+            </div>
+            <div > 
+              <input type="button" name="" value="CALCULATE" class="ab" onclick="Calculator()">
+            </div>            
+          </div>
+      </div>
+
+    </div>
+      <div class="app-form-group showdata">
+              <p id="showData" >  </p>
+     </div>
+</div>
+</div>
+</div>
+<script>
+  
+const Calculator = () =>{
+  let ds = document.getElementById('ds').value;
+  let dbms = document.getElementById('dbms').value;
+  let mas = document.getElementById('mas').value;
+  let mp = document.getElementById('mp').value;
+let fst = document.getElementById('fst').value;
+
+  let grades = "";
+
+
+  let totalmarks = parseFloat(ds) + parseFloat(dbms) + parseFloat(mas) + parseFloat(mp) + parseFloat(fst);
+  
+
+  let perc = (totalmarks/500) * 100;
+  
+
+  debugger;
+
+  if(perc <= 100  && perc >= 80){
+    grades = 'A+';
+  }else if(perc <= 79  && perc >= 70){
+     grades = 'A';
+  }
+else if(perc <= 69  && perc >= 60){
+     grades = 'B+';
+   }
+  else if(perc <= 59  && perc >= 50){
+     grades = 'C';
+  }else{
+     grades = 'F';
+  }
+
+ if(perc >= 39.5){
+    document.getElementById('showData').innerHTML = `  Totalmarks  ${totalmarks} Percentage ${perc}%. <br> Grade is ${grades}. You are Pass. `
+  }
+  else{
+    document.getElementById('showData').innerHTML = ` Totalmarks ${totalmarks} Percentage ${perc}%. <br>Grade ${grades}. You are Fail. `
+  }
+
+  
+}
+
+
+</script>
+
+</body>
+</html>
